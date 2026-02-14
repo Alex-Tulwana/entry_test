@@ -68,6 +68,8 @@ ERC - 721
 Firts minting -5 000 000 gas (100 000 *50) 
 then 'transaction tip =20 gwei 
 5 000 000 * 20 = 100 000 000 gwei wich is equal to 0.1 ETH * $3 000 =$300
+
+There is a $276 difference between the and the cheapest get to be ERC - 1155  meaning a lot of farmers can use this plaform and also small bussiness may also be able to use it since it is affordable esecially regarding our financial situation in south africa.
 **Your Calculation/Reasoning:**  
 - ERC-721 cost = [Show calculation]
 - ERC-1155 cost = [Show calculation]j
@@ -90,7 +92,8 @@ A farmer asks: *"Why can't we just use a normal website with a database?"*
 - **D)** "Blockchain uses cryptography which makes it unhackable, unlike normal databases."  
 
 **Your Answer:** [A/B/C/D]  
-
+B 
+Because the reputation is owned by the farmer no other party and als once payments go through there are permanetly recorded in the system and the system will incule the farmer and the customer meaning no additinal costs for the farmer .
 **Your Explanation:**  
 [2–3 sentences explaining what makes this answer correct. What did you learn about why blockchain matters in Africa?]  
 

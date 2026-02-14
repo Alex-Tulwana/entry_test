@@ -30,7 +30,9 @@
 - **D)** Build everything as separate NFT collections with no DEX integration since farmers won't understand DeFi protocols.  
 
 **Your Answer:** [A/B/C/D]  
-
+B - I think this chice is mainy because it allows famrers to actually be abler to list multiple producs produced even if thay may be identiacal or of the same nature .
+also keeping or saving reputation on the chain help to make sure that there is no fould play , meaing it ensure transparency across platfoms and it also aligns with decentralization principles which is good .
+meanig storing reputation on the chain is the best form since it cannot be changed r cheated .
 **Your Reasoning:**  
 [2–3 sentences explaining why you chose this answer. What makes it the best choice?]  
 
@@ -55,9 +57,10 @@ A farmer wants to list 50 bags of maize. Gas costs are:
 
 **Your Answer:** [A/B/C/D]  
 
+
 **Your Calculation/Reasoning:**  
 - ERC-721 cost = [Show calculation]
-- ERC-1155 cost = [Show calculation]
+- ERC-1155 cost = [Show calculation]j
 - Difference = [Show calculation]
 
 

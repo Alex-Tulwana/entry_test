@@ -1,83 +1,85 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-/**
- * @title SkillsMarketplace
- * @dev A decentralised marketplace for skills and gigs
- * @notice PART 1 - Skills Marketplace (MANDATORY)
- */
 contract SkillsMarketplace {
-    
-    // TODO: Define your state variables here
-    // Consider:
-    // - How will you track workers and their skills?
-    // - How will you store gig information?
-    // - How will you manage payments?
-    
     address public owner;
-    
+    uint256 public nextGigId;
+
+    struct Worker {
+        string skill;
+        bool registered;
+    }
+
+    struct Gig {
+        uint256 id;
+        string description;
+        string skillRequired;
+        address employer;
+        uint256 bounty;
+        bool completed;
+        string submissionUrl;
+    }
+
+    mapping(address => Worker) public workers;
+    mapping(uint256 => Gig) public gigs;
+    mapping(uint256 => address[]) public applications;
+
+    event WorkerRegistered(address worker, string skill);
+    event GigPosted(uint256 gigId, address employer, string skillRequired, uint256 bounty);
+    event AppliedForGig(uint256 gigId, address worker);
+    event WorkSubmitted(uint256 gigId, address worker, string submissionUrl);
+    event WorkApproved(uint256 gigId, address worker, uint256 amount);
+
     constructor() {
         owner = msg.sender;
     }
-    
-    // TODO: Implement registerWorker function
-    // Requirements:
-    // - Workers should be able to register with their skill
-    // - Prevent duplicate registrations
-    // - Emit an event when a worker registers
+
     function registerWorker(string memory skill) public {
-        // Your implementation here
+        require(!workers[msg.sender].registered, "Already registered");
+        workers[msg.sender] = Worker(skill, true);
+        emit WorkerRegistered(msg.sender, skill);
     }
-    
-    // TODO: Implement postGig function
-    // Requirements:
-    // - Employers post gigs with bounty (msg.value)
-    // - Store gig description and required skill
-    // - Ensure ETH is sent with the transaction
-    // - Emit an event when gig is posted
+
     function postGig(string memory description, string memory skillRequired) public payable {
-        // Your implementation here
-        // Think: How do you safely hold the ETH until work is approved?
+        require(msg.value > 0, "Bounty must be > 0");
+        gigs[nextGigId] = Gig(nextGigId, description, skillRequired, msg.sender, msg.value, false, "");
+        emit GigPosted(nextGigId, msg.sender, skillRequired, msg.value);
+        nextGigId++;
     }
-    
-    // TODO: Implement applyForGig function
-    // Requirements:
-    // - Workers can apply for gigs
-    // - Check if worker has the required skill
-    // - Prevent duplicate applications
-    // - Emit an event
+
     function applyForGig(uint256 gigId) public {
-        // Your implementation here
+        require(workers[msg.sender].registered, "Not registered");
+        require(keccak256(bytes(workers[msg.sender].skill)) == keccak256(bytes(gigs[gigId].skillRequired)), "Skill mismatch");
+
+        address[] storage appl = applications[gigId];
+        for (uint i = 0; i < appl.length; i++) {
+            require(appl[i] != msg.sender, "Already applied");
+        }
+        appl.push(msg.sender);
+        emit AppliedForGig(gigId, msg.sender);
     }
-    
-    // TODO: Implement submitWork function
-    // Requirements:
-    // - Workers submit completed work (with proof/URL)
-    // - Validate that worker applied for this gig
-    // - Update gig status
-    // - Emit an event
+
     function submitWork(uint256 gigId, string memory submissionUrl) public {
-        // Your implementation here
+        address[] storage appl = applications[gigId];
+        bool applied = false;
+        for (uint i = 0; i < appl.length; i++) {
+            if (appl[i] == msg.sender) {
+                applied = true;
+                break;
+            }
+        }
+        require(applied, "Did not apply");
+
+        gigs[gigId].submissionUrl = submissionUrl;
+        emit WorkSubmitted(gigId, msg.sender, submissionUrl);
     }
-    
-    // TODO: Implement approveAndPay function
-    // Requirements:
-    // - Only employer who posted gig can approve
-    // - Transfer payment to worker
-    // - CRITICAL: Implement reentrancy protection
-    // - Update gig status to completed
-    // - Emit an event
+
     function approveAndPay(uint256 gigId, address worker) public {
-        // Your implementation here
-        // Security: Use checks-effects-interactions pattern!
+        Gig storage gig = gigs[gigId];
+        require(msg.sender == gig.employer, "Only employer can approve");
+        require(!gig.completed, "Already completed");
+
+        gig.completed = true; 
+        payable(worker).transfer(gig.bounty);
+        emit WorkApproved(gigId, worker, gig.bounty);
     }
-    
-    // BONUS: Implement dispute resolution
-    // What happens if employer doesn't approve but work is done?
-    // Consider implementing a timeout mechanism
-    
-    // Helper functions you might need:
-    // - Function to get gig details
-    // - Function to check worker registration
-    // - Function to get all gigs
 }

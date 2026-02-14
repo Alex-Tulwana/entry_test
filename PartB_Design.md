@@ -15,7 +15,13 @@
 - What trade-offs did you consider for storage efficiency?
 
 [Write your response here]
-
+Mapping for quick lookup of wrkers and player entries in secureLottery it is good for checking registration and entry counts 
+arrays for listing gigs and lttery entries where many entries per address are allowed 
+ skilsmarketPlace : workers mapping , gig mapping ,application mapping .
+ secure lttery : entries array for total entries ,playerEntryCount mapping . 
+tradeoffs
+mapping cannot iterate 
+array easy iteration but costly for huge data .
 ---
 
 ### 2. Security Measures
@@ -26,6 +32,8 @@
 - Front-running/Randomness manipulation (specifically for `SecureLottery`)?
 
 [Write your response here]
+For SkillsMarket  postGig and approvaAndPay are the most expensive because of storage wrrites and ETH transfar .
+SecureLotter selctWinner could be costly because of larger number of entries 
 
 ---
 
@@ -37,7 +45,9 @@
 
 [Write your response here]
 
----
+Use storage not memory 
+multiple prize tiers in lotter 
+custom errors can minize gas .
 
 ## REAL-WORLD DEPLOYMENT CONCERNS
 
@@ -49,7 +59,10 @@
 
 [Write your response here]
 
----
+---   PostGig and slcteinner are expensive loops to use .
+storage can get bigger as arrays get bigger 
+try offchain randomness 
+
 
 ### 2. Scalability
 **What happens with 10,000+ entries/gigs?**
@@ -59,7 +72,9 @@
 
 [Write your response here]
 
----
+--- 10 000 entries 
+Loops in application will be expensive 
+winner selection if array is  huge 
 
 ### User Experience
 

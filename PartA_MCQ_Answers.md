@@ -56,8 +56,18 @@ A farmer wants to list 50 bags of maize. Gas costs are:
 - **D)** ERC-1155 is cheaper by approximately $54  
 
 **Your Answer:** [A/B/C/D]  
+answe B
+ERC-1155 
+Firts minting -150 000 gas , Each extra item - 5 000 
+therefore 150 000 + 5000 *49 = 150 000 + 245 000 = 395 000 gas 
+then 'transaction tip =20 gwei 
+395 0000 * 20 = 7 900 000 gwei wich is equal to 0.0079 ETH * $3 000 =$23.7
 
-
+WHILE 
+ERC - 721 
+Firts minting -5 000 000 gas (100 000 *50) 
+then 'transaction tip =20 gwei 
+5 000 000 * 20 = 100 000 000 gwei wich is equal to 0.1 ETH * $3 000 =$300
 **Your Calculation/Reasoning:**  
 - ERC-721 cost = [Show calculation]
 - ERC-1155 cost = [Show calculation]j

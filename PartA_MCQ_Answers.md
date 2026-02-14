@@ -94,6 +94,7 @@ A farmer asks: *"Why can't we just use a normal website with a database?"*
 **Your Answer:** [A/B/C/D]  
 B 
 Because the reputation is owned by the farmer no other party and als once payments go through there are permanetly recorded in the system and the system will incule the farmer and the customer meaning no additinal costs for the farmer .
+Block chain in Africa matters because it promotes transparency in systems and may also eliminate a lot of additional parties that require more costs during transactions .
 **Your Explanation:**  
 [2–3 sentences explaining what makes this answer correct. What did you learn about why blockchain matters in Africa?]  
 
@@ -120,6 +121,16 @@ Because the reputation is owned by the farmer no other party and als once paymen
 - **D)** The constant product formula prevents any impermanent loss by automatically rebalancing. DAOs cannot implement financial protections due to smart contract immutability. ERC-1155 tokens are incompatible with standard DEX protocols.  
 
 **Your Answer:** [A/B/C/D]  
+B 
+Liquidity provider adds -10 ETH , 20 000 USDC 
+and the formular is X*Y =K 
+therefore X = 10 ETH while Y = 20 000 USDC 
+10 * 20 000 = 200 000 
+ AFTER SOMEONE ADDS 2 ETH we now have : 
+ 12 * Y = 200 000 
+ Y = 200 000 / 12 = 16 666 USDC 
+ meaning a trader will get 20 000 - 16 666 = 3 333 USDC 
+ 
 
 **Your Reasoning:**  
 

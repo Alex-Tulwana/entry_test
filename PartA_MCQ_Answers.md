@@ -130,7 +130,8 @@ therefore X = 10 ETH while Y = 20 000 USDC
  12 * Y = 200 000 
  Y = 200 000 / 12 = 16 666 USDC 
  meaning a trader will get 20 000 - 16 666 = 3 333 USDC 
- 
+ The pool will have a different ratio of ETH and USDC 
+ If the market price changes the liquidity provider will lose money so it is better to just hold the ETH.I think the voters in Governance should decide to add protection for their losses or should just let communities have a say in improving the system .
 
 **Your Reasoning:**  
 
